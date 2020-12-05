@@ -1,4 +1,4 @@
-package com.gmail.va034600.cleanarchitecture1;
+package com.gmail.va034600.cleanarchitecture1.gateway.database;
 
 import com.gmail.va034600.cleanarchitecture1.business.entity.Student;
 import com.gmail.va034600.cleanarchitecture1.gateway.database.impl.StudentRepositoryImpl;
