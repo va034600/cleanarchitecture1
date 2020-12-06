@@ -11,15 +11,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
-class AddTaroUseCaseImplTest {
+class RegistrationStudentUseCaseImplTest {
     @Resource
-    AddTaroUseCaseImpl sut;
+    RegistrationStudentUseCaseImpl sut;
     @Autowired
     StudentRepository studentRepository;
 
     @Test
     void register_taro() {
-        sut.registerTaro();
+        sut.register("taro");
         assertThat(studentRepository.findByName("taro").get().getName()).isEqualTo("taro");
     }
 }
