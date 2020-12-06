@@ -15,7 +15,6 @@ public class AddTaroUseCaseImpl implements AddTaroUseCase {
     public Long registerTaro() {
         Student student = new Student();
         student.setName("taro");
-        studentRepository.create(student);
-        return studentRepository.findByName("taro").get().getId();
+        return studentRepository.create(student);
     }
 }
