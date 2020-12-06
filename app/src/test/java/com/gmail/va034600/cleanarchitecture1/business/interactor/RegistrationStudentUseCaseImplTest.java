@@ -1,5 +1,6 @@
 package com.gmail.va034600.cleanarchitecture1.business.interactor;
 
+import com.gmail.va034600.cleanarchitecture1.business.entity.Student;
 import com.gmail.va034600.cleanarchitecture1.business.repository.StudentRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,10 @@ class RegistrationStudentUseCaseImplTest {
     StudentRepository studentRepository;
 
     @Test
-    void register_taro() {
-        sut.register("taro");
-        assertThat(studentRepository.findByName("taro").get().getName()).isEqualTo("taro");
+    void register() {
+        sut.register("taro", "a@a.com");
+        Student student = studentRepository.findByName("taro").get();
+        assertThat(student.getName()).isEqualTo("taro");
+        assertThat(student.getEmail()).isEqualTo("a@a.com");
     }
 }

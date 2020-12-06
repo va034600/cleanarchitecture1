@@ -18,6 +18,7 @@ public class StudentRepositoryImpl implements StudentRepository {
     public Long create(Student student) {
         StudentModel studentModel = new StudentModel();
         studentModel.setName(student.getName());
+        studentModel.setEmail(student.getEmail());
         studentRepositoryJpa.save(studentModel);
         return studentModel.getId();
     }
@@ -29,6 +30,7 @@ public class StudentRepositoryImpl implements StudentRepository {
             Student s = new Student();
             s.setId(a.getId());
             s.setName(a.getName());
+            s.setEmail(a.getEmail());
             return s;
         });
     }

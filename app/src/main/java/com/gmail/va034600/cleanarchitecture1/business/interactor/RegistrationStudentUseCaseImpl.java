@@ -12,9 +12,10 @@ public class RegistrationStudentUseCaseImpl implements RegistrationStudentUseCas
     StudentRepository studentRepository;
 
     @Override
-    public Long register(String name) {
+    public Long register(String name, String email) {
         Student student = new Student();
         student.setName(name);
+        student.setEmail(email);
         return studentRepository.create(student);
     }
 }
