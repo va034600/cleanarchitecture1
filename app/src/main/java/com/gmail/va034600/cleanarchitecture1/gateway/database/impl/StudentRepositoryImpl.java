@@ -7,28 +7,29 @@ import com.gmail.va034600.cleanarchitecture1.business.repository.StudentReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class StudentRepositoryImpl implements StudentRepository {
     @Autowired
     public StudentRepositoryJpa studentRepositoryJpa;
 
     @Override
-    public void registerTaro() {
-        StudentModel student1 = new StudentModel();
-        student1.setId(0);
-        student1.setName("abc");
-        studentRepositoryJpa.save(student1);
-
-        StudentModel student2 = new StudentModel();
-        student2.setId(1);
-        student2.setName("taro");
-        studentRepositoryJpa.save(student2);
+    public Long create(Student student) {
+        StudentModel studentModel = new StudentModel();
+        studentModel.setName(student.getName());
+        studentRepositoryJpa.save(studentModel);
+        return studentModel.getId();
     }
 
     @Override
-    public Student findTaro() {
-        Student result = new Student();
-        result.setName(studentRepositoryJpa.findById(1L).get().getName());
-        return result;
+    public Optional<Student> findByName(String name) {
+        Optional<StudentModel> studentModel = studentRepositoryJpa.findByName(name);
+        return studentModel.map(a -> {
+            Student s = new Student();
+            s.setId(a.getId());
+            s.setName(a.getName());
+            return s;
+        });
     }
 }

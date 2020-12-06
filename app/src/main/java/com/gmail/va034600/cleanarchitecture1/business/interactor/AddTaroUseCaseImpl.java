@@ -12,8 +12,10 @@ public class AddTaroUseCaseImpl implements AddTaroUseCase {
     StudentRepository studentRepository;
 
     @Override
-    public Student register_and_find() {
-        studentRepository.registerTaro();
-        return studentRepository.findTaro();
+    public Long register_taro() {
+        Student student = new Student();
+        student.setName("taro");
+        studentRepository.create(student);
+        return studentRepository.findByName("taro").get().getId();
     }
 }
