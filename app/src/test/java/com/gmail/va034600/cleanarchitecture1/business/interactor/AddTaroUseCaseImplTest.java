@@ -19,7 +19,7 @@ class AddTaroUseCaseImplTest {
 
     @Test
     void register_taro() {
-        sut.register_taro();
+        sut.registerTaro();
         assertThat(studentRepository.findByName("taro").get().getName()).isEqualTo("taro");
     }
 }

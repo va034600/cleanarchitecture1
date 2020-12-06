@@ -12,7 +12,7 @@ public class AddTaroUseCaseImpl implements AddTaroUseCase {
     StudentRepository studentRepository;
 
     @Override
-    public Long register_taro() {
+    public Long registerTaro() {
         Student student = new Student();
         student.setName("taro");
         studentRepository.create(student);
