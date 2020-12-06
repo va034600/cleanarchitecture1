@@ -4,16 +4,20 @@ import com.gmail.va034600.cleanarchitecture1.business.entity.Student;
 import com.gmail.va034600.cleanarchitecture1.business.repository.StudentRepository;
 import com.gmail.va034600.cleanarchitecture1.business.service.MailService;
 import com.gmail.va034600.cleanarchitecture1.business.usecase.RegistrationStudentUseCase;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
+@Component
 public class RegistrationStudentUseCaseImpl implements RegistrationStudentUseCase {
-    @Autowired
-    StudentRepository studentRepository;
+    private final StudentRepository studentRepository;
+    private final MailService mailService;
 
-    @Autowired
-    MailService mailService;
+    public RegistrationStudentUseCaseImpl(
+            StudentRepository studentRepository,
+            MailService mailService
+    ){
+        this.studentRepository = studentRepository;
+        this.mailService = mailService;
+    }
 
     @Override
     public Long register(String name, String email) {
